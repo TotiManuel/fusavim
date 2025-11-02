@@ -15,37 +15,37 @@ export default function Convenios() {
     {
       nombre: "PAMI",
       descripcion: "Convenio con cobertura total para afiliados PAMI.",
-      logo: "public/convenios/logo_pami.svg",
+      logo: "/convenios/logo_pami.svg",
       link: "https://www.pami.org.ar/"
     },
     {
       nombre: "Apross",
       descripcion: "Convenio para afiliados Apross.",
-      logo: "public/convenios/apross_logo.png",
+      logo: "/convenios/apross_logo.png",
       link: "https://www.pami.org.ar/"
     },
     {
       nombre: "Swiss Medical",
       descripcion: "Cobertura de obras sociales y planes privados.",
-      logo: "public/convenios/swiss-medical-logo.png",
+      logo: "/convenios/swiss-medical-logo.png",
       link: "https://www.swissmedical.com.ar/"
     },
     {
       nombre: "OSDE",
       descripcion: "Convenio para afiliados OSDE con acceso a todos los servicios.",
-      logo: "public/convenios/Logo_OSDE.png",
+      logo: "/convenios/Logo_OSDE.png",
       link: "https://www.osde.com.ar/"
     },
     {
       nombre: "Sancor Salud",
       descripcion: "Convenio para afiliados de Sancor Salud.",
-      logo: "public/convenios/sancosalud_logo.png",
+      logo: "/convenios/sancosalud_logo.png",
       link: "https://www.osde.com.ar/"
     },
     {
       nombre: "Prevencion Salud",
       descripcion: "Convenio para afiliados de Prevencion Salud.",
-      logo: "public/convenios/prevencion-salud-logo.jpg",
+      logo: "/convenios/prevencion-salud-logo.jpg",
       link: "https://www.osde.com.ar/"
     },
   ];
