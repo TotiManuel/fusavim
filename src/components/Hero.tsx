@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
 
           <div className="relative">
             <img
-              src="src\images\Imagen1.jpg"
+              src="/images/Imagen1.jpg"
               alt="Modern medical facility"
               className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               loading="lazy"

@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           <Link to="/" className="flex items-center space-x-3">
             <div className="relative">
               <img
-                src="src/images/logo.png"
+                src="/images/logo.png"
                 alt="Clínica Fusavim"
                 className="w-12 h-12 rounded-full border border-sky-300 shadow-sm"
               />

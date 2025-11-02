@@ -37,7 +37,7 @@ const About: React.FC = () => {
               </div>
               <div>
                 <img
-                  src="src\images\frente.jpg"
+                  src="/images/frente.jpg"
                   alt="Medical team"
                   className="rounded-2xl shadow-xl w-full h-96 object-cover"
                   loading="lazy"

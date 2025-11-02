@@ -17,21 +17,21 @@ const Novedades: React.FC = () => {
       title: 'Circulo de la Mujer',
       date: '2025-11-01',
       description: 'Lanzamos un programa integral de prevencion para las mujeres, con chequeos completos y planes personalizados para cuidarlas.',
-      image: 'public/news/images/cardiologia-preventiva.jpg',
+      image: '/news/images/cardiologia-preventiva.jpg',
       link: '/circulo-mujer'
     },
     {
       title: 'Campaña de vacunación 2025',
       date: '2025-10-20',
       description: 'Se inicia la campaña anual de vacunación. Consultá tu calendario de vacunas y turnos disponibles.',
-      image: 'public/news/images/vacunacion-campana-2025.jpg',
+      image: '/news/images/vacunacion-campana-2025.jpg',
       link: '/campania-vacunacion'
     },
     {
       title: 'Horario extendido en laboratorio',
       date: '2025-10-15',
       description: 'Nuestro laboratorio amplía su horario de atención para facilitar la realización de estudios.',
-      image: 'public/news/images/laboratorio.jpg',
+      image: '/news/images/laboratorio.jpg',
       link: '/laboratorio-extendido'
     }
   ]);
