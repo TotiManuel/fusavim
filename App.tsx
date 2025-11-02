@@ -15,9 +15,9 @@ import Estudios from "./src/pages/Study";
 import Appointment from './src/pages/Appointment';
 import Novedades from './src/pages/News';
 import RecetaDigital from './src/pages/Receta'
-import CirculoMujer from './public/news/pages/circulo-mujer';
-import CampaniaVacunacion2025 from './public/news/pages/campana-vacunacion-2025';
-import LaboratorioHorarioExtendido from './public/news/pages/laboratorio-extendido'
+import CirculoMujer from './src/pages/news/pages/circulo-mujer';
+import CampaniaVacunacion2025 from './src/pages/news/pages/campana-vacunacion-2025';
+import LaboratorioHorarioExtendido from './src/pages/news/pages/laboratorio-extendido'
 import Cardiologia from './src/pages/cardiologia/cardiologia'
 import CirugiaGeneral from './src/pages/cirugiaGeneral/cirugia-general'
 import Dialisis from './src/pages/dialisis/dialisis'
