@@ -14,7 +14,6 @@ const Home: React.FC = () => {
       <Header />
       <main>
         <Hero />
-        
         <ServicesComponent />
       </main>
       <Footer />

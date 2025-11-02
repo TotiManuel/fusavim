@@ -32,6 +32,7 @@ import Oncologia from './src/pages/oncologia/oncologia'
 import PAMI from './src/pages/pami/pami'
 import Urologia from './src/pages/urologia/urologia'
 import MedicinaGeneral from './src/pages/medicinaGeneral/medicina-general'
+import PageInDevelopment from './src/pages/page-in-development'
 import NotFound from './src/pages/NotFound';
 
 const App: React.FC = () => {
@@ -67,6 +68,7 @@ const App: React.FC = () => {
             <Route path='/pami' element={<PAMI />}/>
             <Route path='/urologia' element={<Urologia />}/>
             <Route path="/medicina general" element={<MedicinaGeneral />} />
+            <Route path="/page-in-development" element={<PageInDevelopment />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ToastContainer

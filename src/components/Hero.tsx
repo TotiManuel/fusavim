@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
                 to="/appointment"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors group"
               >
-                Reservar Cita
+                Ponete en contacto
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
