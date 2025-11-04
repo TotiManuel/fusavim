@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     {
       name: 'Pacientes',
       dropdown: [
-        { name: 'Estudios', href: '/page-in-development' },
+        { name: 'Estudios', href: '/estudios' },
         { name: 'Receta Digital', href: '/page-in-development' },
         { name: 'Requisitos', href: '/page-in-development' },
       ],
