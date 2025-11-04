@@ -157,7 +157,8 @@ export default function Estudios() {
                 </div>
                 <a
                   href={estudio.archivo}
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     padding: "8px 16px",
                     borderRadius: "50px",
