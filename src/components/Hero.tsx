@@ -18,14 +18,14 @@ const Hero: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                to="/appointment"
+                to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors group"
               >
                 Ponete en contacto
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/services"
+                to="/prestaciones"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-teal-600 transition-colors"
               >
                 Nuestros Servicios

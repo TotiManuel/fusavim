@@ -11,7 +11,7 @@ interface Study {
   image: string;
 }
 
-const Services: React.FC = () => {
+const Prestaciones: React.FC = () => {
   const [filter, setFilter] = useState("");
 
   const studies: Study[] = [
@@ -129,4 +129,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default Prestaciones;

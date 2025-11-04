@@ -7,12 +7,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './src/pages/Home';
 import About from './src/pages/About';
-import Services from './src/pages/Services';
+import Prestaciones from './src/pages/Prestaciones';
 import Doctors from './src/pages/Doctors';
 import Convenios from "./src/pages/Convenios";
 import Contact from './src/pages/Contact';
 import Estudios from "./src/pages/Study";
-import Appointment from './src/pages/Appointment';
 import Novedades from './src/pages/News';
 import RecetaDigital from './src/pages/Receta'
 import CirculoMujer from './src/pages/news/pages/circulo-mujer';
@@ -43,12 +42,11 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/prestaciones" element={<Prestaciones />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path='/convenios' element={<Convenios /> } />
             <Route path='/estudios' element={<Estudios /> } />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/appointment" element={<Appointment />} />
             <Route path='/news' element={<Novedades /> } />
             <Route path='/recetas' element={<RecetaDigital /> } />
             <Route path="/circulo-mujer" element={<CirculoMujer />} />

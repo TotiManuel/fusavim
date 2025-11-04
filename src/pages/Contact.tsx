@@ -138,10 +138,12 @@ const Contact: React.FC = () => {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                       required
                     >
-                      <option value="">Seleccionar un Asunto</option>
-                      <option value="appointment">Solicitud de Turno</option>
-                      <option value="general">Consulta General</option>
-                      <option value="billing">Pregunta de Facturacion</option>
+                      <option value="">Seleccionar Departamento</option>
+                      <option value="secretary">Secretarias</option>
+                      <option value="admision">Admisión</option>
+                      <option value="rrhh">RR HH</option>
+                      <option value="billing">Facturacion</option>
+                      <option value="auditoria">Auditoría Médica</option>
                       <option value="emergency">Emergencia</option>
                     </select>
                   </div>
