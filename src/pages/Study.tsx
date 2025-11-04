@@ -9,39 +9,29 @@ interface Estudio {
 }
 
 export default function Estudios() {
-  // Base de datos simulada
-  const estudiosDB: Record<string, Record<string, Estudio[]>> = {
-    "12345678": {
-      "ABC123": [
-        { nombre: "Análisis de Sangre", archivo: "/estudios/abc123_sangre.pdf", fecha: "2025-10-15" },
-        { nombre: "Radiografía Torácica", archivo: "/estudios/abc123_radiografia.pdf", fecha: "2025-10-18" },
-      ],
-    },
-    "87654321": {
-      "XYZ789": [
-        { nombre: "Electrocardiograma", archivo: "/estudios/xyz789_ecg.pdf", fecha: "2025-09-10" },
-      ],
-    },
-  };
-
   const [dni, setDni] = useState("");
   const [numeroEstudio, setNumeroEstudio] = useState("");
   const [estudios, setEstudios] = useState<Estudio[]>([]);
   const [error, setError] = useState("");
 
-  const handleBuscar = () => {
-    const dniData = estudiosDB[dni];
-    if (dniData) {
-      const estudiosEncontrados = dniData[numeroEstudio.toUpperCase()];
-      if (estudiosEncontrados) {
-        setEstudios(estudiosEncontrados);
+  const handleBuscar = async () => {
+    try {
+      const response = await fetch(`https://api-fusavim.onrender.com/api/estudios?dni=${dni}&numero=${numeroEstudio}`);
+      const data = await response.json();
+
+      if (data.length > 0) {
+        setEstudios(data);
         setError("");
-        return;
+      } else {
+        setEstudios([]);
+        setError("No se encontraron estudios con ese DNI y número de estudio.");
       }
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+      setError("Error al conectar con el servidor.");
     }
-    setEstudios([]);
-    setError("No se encontraron estudios con ese DNI y número de estudio.");
   };
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
