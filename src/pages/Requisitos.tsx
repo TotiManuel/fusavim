@@ -6,9 +6,8 @@ import Footer from "../components/Footer";
 export default function Requisitos() {
   const [tipo, setTipo] = useState("");
   const [subtipo, setSubtipo] = useState("");
-  const [observaciones, setObservaciones] = useState("");
   const [error, setError] = useState("");
-  const [mensaje, setMensaje] = useState("");
+  const [mensaje] = useState("");
 
   // Requisitos organizados
   const data = {
@@ -120,19 +119,6 @@ export default function Requisitos() {
       y += 8;
     });
 
-    // Observaciones
-    if (observaciones.trim()) {
-      y += 10;
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(colorPrincipal.r, colorPrincipal.g, colorPrincipal.b);
-      doc.text("Observaciones:", 20, y);
-      y += 8;
-
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(0, 0, 0);
-      const lineas = doc.splitTextToSize(observaciones, 170);
-      doc.text(lineas, 25, y);
-    }
 
     // Pie de página
     doc.setFontSize(10);
@@ -140,10 +126,9 @@ export default function Requisitos() {
     doc.text("Generado automáticamente por la plataforma Fusavim", 20, 280);
 
     doc.save(`Requisitos_${tipo}_${subtipo}.pdf`);
-
-    setMensaje("✅ PDF generado correctamente.");
+    
     setError("");
-  };
+};
 
   return (
     <div className="min-h-screen">
@@ -228,21 +213,6 @@ export default function Requisitos() {
               ))}
             </ul>
           )}
-
-          <textarea
-            value={observaciones}
-            onChange={(e) => setObservaciones(e.target.value)}
-            placeholder="Observaciones (opcional)"
-            rows={3}
-            style={{
-              padding: "10px 16px",
-              borderRadius: "8px",
-              border: "1px solid #008CBA",
-              fontSize: "1rem",
-              resize: "none",
-            }}
-          />
-
           {/* BOTÓN DESCARGAR PDF */}
           <div
             style={{
