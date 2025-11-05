@@ -126,7 +126,7 @@ export default function Requisitos() {
     doc.text("Generado automáticamente por la plataforma Fusavim", 20, 280);
 
     doc.save(`Requisitos_${tipo}_${subtipo}.pdf`);
-    
+
     setError("");
 };
 
@@ -214,28 +214,31 @@ export default function Requisitos() {
             </ul>
           )}
           {/* BOTÓN DESCARGAR PDF */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "25px",
-            }}
-          >
-            <button
-              onClick={generarPDF}
-              style={{
-                padding: "10px 24px",
-                borderRadius: "50px",
-                backgroundColor: "#4CAF50",
-                color: "#fff",
-                fontWeight: "bold",
-                border: "none",
-                cursor: "pointer",
-              }}
+          {tipo && subtipo && (
+            <div
+                style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "25px",
+                }}
             >
-              📄 Descargar PDF
-            </button>
-          </div>
+                <button
+                onClick={generarPDF}
+                style={{
+                    padding: "10px 24px",
+                    borderRadius: "50px",
+                    backgroundColor: "#4CAF50",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    border: "none",
+                    cursor: "pointer",
+                }}
+                >
+                📄 Descargar PDF
+                </button>
+            </div>
+            )}
+
 
           {error && (
             <p
