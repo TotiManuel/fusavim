@@ -14,6 +14,7 @@ import Contact from './src/pages/Contact';
 import Estudios from "./src/pages/Study";
 import Novedades from './src/pages/News';
 import RecetaDigital from './src/pages/Receta'
+import Requisitos from './src/pages/Requisitos'
 import CirculoMujer from './src/pages/news/pages/circulo-mujer';
 import CampaniaVacunacion2025 from './src/pages/news/pages/campana-vacunacion-2025';
 import LaboratorioHorarioExtendido from './src/pages/news/pages/laboratorio-extendido'
@@ -49,6 +50,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path='/news' element={<Novedades /> } />
             <Route path='/recetas' element={<RecetaDigital /> } />
+            <Route path='/requisitos' element={<Requisitos /> } />
             <Route path="/circulo-mujer" element={<CirculoMujer />} />
             <Route path="/campania-vacunacion" element={<CampaniaVacunacion2025 />} />
             <Route path="/laboratorio-extendido" element={<LaboratorioHorarioExtendido />} />
