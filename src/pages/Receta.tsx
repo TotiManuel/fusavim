@@ -85,6 +85,7 @@ export default function SolicitudReceta() {
         >
           Completá tus datos y seleccioná el médico.  
           Se abrirá WhatsApp con un mensaje listo para enviar.
+          *** Momentaneamente solo esta puesto el numero del turnero de secretarias para todos los medicos ***
         </p>
 
         <div
