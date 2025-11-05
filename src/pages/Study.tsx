@@ -68,6 +68,7 @@ export default function Estudios() {
         >
           Ingresá tu DNI y el número de estudio para visualizar y descargar tus resultados.
         </p>
+        <p>Estudio de Prueba: DNI:12345678 Numero de Estudio: ABC123. Es un ECG del 05 de noviembre del 2025</p>
 
         <div
           style={{

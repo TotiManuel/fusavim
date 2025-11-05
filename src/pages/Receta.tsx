@@ -2,28 +2,34 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export default function RecetaDigital() {
+export default function RecetaMedica() {
   const [dni, setDni] = useState("");
   const [nombre, setNombre] = useState("");
-  const [medicamento, setMedicamento] = useState("");
+  const [obraSocial, setObraSocial] = useState("");
+  const [afiliado, setAfiliado] = useState("");
+  const [diagnostico, setDiagnostico] = useState("");
+  const [medicamentos, setMedicamentos] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [error, setError] = useState("");
 
   const handleEnviar = () => {
-    if (!dni || !nombre || !medicamento) {
+    if (!dni || !nombre || !obraSocial || !afiliado || !diagnostico || !medicamentos) {
       setError("Por favor completá todos los campos antes de enviar.");
       setMensaje("");
       return;
     }
 
-    // Simulación de envío
+    // Simulación de envío al backend
     setTimeout(() => {
-      setMensaje("Tu solicitud de receta fue enviada correctamente. Nos contactaremos a la brevedad.");
+      setMensaje("Tu solicitud de receta médica fue enviada correctamente. Un profesional revisará la información y te contactará.");
       setError("");
       setDni("");
       setNombre("");
-      setMedicamento("");
-    }, 600);
+      setObraSocial("");
+      setAfiliado("");
+      setDiagnostico("");
+      setMedicamentos("");
+    }, 800);
   };
 
   useEffect(() => {
@@ -49,8 +55,9 @@ export default function RecetaDigital() {
             marginBottom: "20px",
           }}
         >
-          Solicitud de Receta Digital
+          Solicitud de Receta Médica
         </h1>
+
         <p
           style={{
             textAlign: "center",
@@ -59,8 +66,8 @@ export default function RecetaDigital() {
             marginBottom: "40px",
           }}
         >
-          Completá los datos del formulario para solicitar tu receta.  
-          Nuestro equipo médico la revisará y te enviará una copia digital.
+          Completá el siguiente formulario para solicitar tu receta médica digital.  
+          Nuestro equipo revisará la información y te enviará una copia firmada.
         </p>
 
         <div
@@ -88,7 +95,33 @@ export default function RecetaDigital() {
             type="text"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-            placeholder="Nombre completo"
+            placeholder="Apellido y Nombre"
+            style={{
+              padding: "10px 16px",
+              borderRadius: "8px",
+              border: "1px solid #008CBA",
+              fontSize: "1rem",
+            }}
+          />
+
+          <input
+            type="text"
+            value={obraSocial}
+            onChange={(e) => setObraSocial(e.target.value)}
+            placeholder="Obra Social"
+            style={{
+              padding: "10px 16px",
+              borderRadius: "8px",
+              border: "1px solid #008CBA",
+              fontSize: "1rem",
+            }}
+          />
+
+          <input
+            type="text"
+            value={afiliado}
+            onChange={(e) => setAfiliado(e.target.value)}
+            placeholder="Número de Afiliado"
             style={{
               padding: "10px 16px",
               borderRadius: "8px",
@@ -98,9 +131,23 @@ export default function RecetaDigital() {
           />
 
           <textarea
-            value={medicamento}
-            onChange={(e) => setMedicamento(e.target.value)}
-            placeholder="Medicamento solicitado"
+            value={diagnostico}
+            onChange={(e) => setDiagnostico(e.target.value)}
+            placeholder="Diagnóstico"
+            rows={3}
+            style={{
+              padding: "10px 16px",
+              borderRadius: "8px",
+              border: "1px solid #008CBA",
+              fontSize: "1rem",
+              resize: "none",
+            }}
+          />
+
+          <textarea
+            value={medicamentos}
+            onChange={(e) => setMedicamentos(e.target.value)}
+            placeholder="Medicamentos solicitados"
             rows={4}
             style={{
               padding: "10px 16px",
