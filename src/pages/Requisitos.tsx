@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { jsPDF } from "jspdf";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Requisitos() {
   const [tipo, setTipo] = useState("");
   const [subtipo, setSubtipo] = useState("");
+  const [observaciones, setObservaciones] = useState("");
   const [error, setError] = useState("");
   const [mensaje, setMensaje] = useState("");
 
@@ -54,36 +56,92 @@ export default function Requisitos() {
   };
 
   const tipos = Object.keys(data);
-  const subtipos = tipo ? Object.keys(data[tipo as keyof typeof data]) : [];
 
-  // Generar PDF (simulado)
-  const generarPDF = () => {
+  // Generar PDF con logo e información
+  const generarPDF = async () => {
     if (!tipo || !subtipo) {
       setError("Seleccioná el tipo y subtipo antes de generar el PDF.");
       return;
     }
 
     const requisitos = data[tipo as keyof typeof data]?.[subtipo] || [];
-    const contenido = `
-Requisitos Médicos
--------------------------
-Tipo: ${tipo}
-Subtipo: ${subtipo}
 
-Requisitos:
-${requisitos.map((r) => `• ${r}`).join("\n")}
+    const doc = new jsPDF();
+    const colorPrincipal = { r: 0, g: 140, b: 186 }; // Azul Fusavim
+    let y = 20;
 
-`;
+    try {
+      // Cargar logo
+      const logo = new Image();
+      logo.src = "/images/logo.png";
+      await new Promise((resolve) => {
+        logo.onload = resolve;
+      });
+      doc.addImage(logo, "PNG", 15, 10, 25, 25);
+    } catch {
+      console.warn("No se pudo cargar el logo.");
+    }
 
-    const blob = new Blob([contenido], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `Requisitos_${tipo}_${subtipo}.pdf`;
-    link.click();
-    URL.revokeObjectURL(url);
+    // Encabezado
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(colorPrincipal.r, colorPrincipal.g, colorPrincipal.b);
+    doc.text("Clínica Fusavim", 45, 25);
+    y = 45;
 
-    setMensaje("PDF generado correctamente.");
+    doc.setFontSize(16);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Requisitos Médicos", 20, y);
+    y += 10;
+
+    // Línea separadora
+    doc.setDrawColor(colorPrincipal.r, colorPrincipal.g, colorPrincipal.b);
+    doc.setLineWidth(0.8);
+    doc.line(20, y, 190, y);
+    y += 10;
+
+    // Detalles
+    doc.setFontSize(13);
+    doc.text(`Tipo: ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`, 20, y);
+    y += 8;
+    doc.text(`Subtipo: ${subtipo}`, 20, y);
+    y += 12;
+
+    // Lista de requisitos
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(colorPrincipal.r, colorPrincipal.g, colorPrincipal.b);
+    doc.text("Requisitos:", 20, y);
+    y += 8;
+
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(0, 0, 0);
+    requisitos.forEach((r) => {
+      doc.text(`• ${r}`, 25, y);
+      y += 8;
+    });
+
+    // Observaciones
+    if (observaciones.trim()) {
+      y += 10;
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(colorPrincipal.r, colorPrincipal.g, colorPrincipal.b);
+      doc.text("Observaciones:", 20, y);
+      y += 8;
+
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(0, 0, 0);
+      const lineas = doc.splitTextToSize(observaciones, 170);
+      doc.text(lineas, 25, y);
+    }
+
+    // Pie de página
+    doc.setFontSize(10);
+    doc.setTextColor(150);
+    doc.text("Generado automáticamente por la plataforma Fusavim", 20, 280);
+
+    doc.save(`Requisitos_${tipo}_${subtipo}.pdf`);
+
+    setMensaje("✅ PDF generado correctamente.");
     setError("");
   };
 
@@ -145,7 +203,7 @@ ${requisitos.map((r) => `• ${r}`).join("\n")}
               }}
             >
               <option value="">Seleccioná subtipo</option>
-              {subtipos.map((s) => (
+              {Object.keys(data[tipo as keyof typeof data]).map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>
@@ -170,6 +228,20 @@ ${requisitos.map((r) => `• ${r}`).join("\n")}
               ))}
             </ul>
           )}
+
+          <textarea
+            value={observaciones}
+            onChange={(e) => setObservaciones(e.target.value)}
+            placeholder="Observaciones (opcional)"
+            rows={3}
+            style={{
+              padding: "10px 16px",
+              borderRadius: "8px",
+              border: "1px solid #008CBA",
+              fontSize: "1rem",
+              resize: "none",
+            }}
+          />
 
           {/* BOTÓN DESCARGAR PDF */}
           <div
