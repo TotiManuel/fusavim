@@ -1,14 +1,15 @@
-// src/pages/Services.tsx
-import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsappButton';
+// src/pages/Prestaciones.tsx
+import React, { useEffect, useState, type JSX } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsappButton";
+import { HeartPulse, Activity, Microscope, Stethoscope, Wind } from "lucide-react";
 
 interface Study {
   name: string;
   category: string;
   description: string;
-  image: string;
+  icon: JSX.Element;
 }
 
 const Prestaciones: React.FC = () => {
@@ -16,107 +17,109 @@ const Prestaciones: React.FC = () => {
 
   const studies: Study[] = [
     {
-      name: 'Estudios Cardiologicos',
-      category: 'Cardiología',
-      description: 'Registro de la actividad eléctrica del corazón para detectar anomalías.',
-      image: '/images/pendiente.jpg',
+      name: "Estudios Cardiológicos",
+      category: "Cardiología",
+      description: "Evaluación del corazón mediante electrocardiogramas, ecocardiogramas y pruebas de esfuerzo.",
+      icon: <HeartPulse className="text-teal-600 w-10 h-10" />,
     },
     {
-      name: 'Ecografias',
-      category: 'Imagenología',
-      description: 'Imágenes en tiempo real para estudio de órganos y tejidos internos.',
-      image: '/images/pendiente.jpg',
+      name: "Ecografías",
+      category: "Imagenología",
+      description: "Permiten visualizar órganos y tejidos internos mediante ultrasonido, sin radiación.",
+      icon: <Activity className="text-teal-600 w-10 h-10" />,
     },
     {
-      name: 'Análisis de laboratorio',
-      category: 'Laboratorio',
-      description: 'Exámenes de sangre, orina y otros fluidos para diagnóstico clínico.',
-      image: '/images/pendiente.jpg',
+      name: "Análisis de laboratorio",
+      category: "Laboratorio",
+      description: "Exámenes clínicos de sangre, orina y otros fluidos para diagnóstico y seguimiento de enfermedades.",
+      icon: <Microscope className="text-teal-600 w-10 h-10" />,
     },
     {
-      name: 'Servicio de Imagenes',
-      category: 'Imagenología',
-      description: 'Estudios de imagen para huesos, tórax y otras estructuras del cuerpo.',
-      image: '/images/pendiente.jpg',
+      name: "Servicio de Imágenes",
+      category: "Imagenología",
+      description: "Radiografías y estudios complementarios para evaluación de estructuras óseas y torácicas.",
+      icon: <Microscope className="text-teal-600 w-10 h-10" />,
     },
     {
-      name: 'Endoscopías',
-      category: 'Gastroenterología',
-      description: 'Evaluación visual del tracto digestivo mediante cámara endoscópica.',
-      image: '/images/pendiente.jpg',
+      name: "Endoscopías",
+      category: "Gastroenterología",
+      description: "Procedimientos diagnósticos y terapéuticos del sistema digestivo con cámara endoscópica.",
+      icon: <Stethoscope className="text-teal-600 w-10 h-10" />,
     },
     {
-      name: 'Pruebas de función renal',
-      category: 'Nefrología',
-      description: 'Estudios para evaluar el funcionamiento de los riñones.',
-      image: '/images/pendiente.jpg',
+      name: "Pruebas respiratorias",
+      category: "Neumonología",
+      description: "Espirometrías y otros estudios que permiten evaluar la capacidad y función pulmonar.",
+      icon: <Wind className="text-teal-600 w-10 h-10" />,
     },
-    {
-      name: 'Pruebas respiratorias',
-      category: 'Neumonología',
-      description: 'Espirometrías y otros estudios para evaluar la función pulmonar.',
-      image: '/images/pendiente.jpg',
-    }
   ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const filteredStudies = studies.filter(study =>
+  const filteredStudies = studies.filter((study) =>
     study.category.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const categories = Array.from(new Set(studies.map(study => study.category)));
+  const categories = Array.from(new Set(studies.map((study) => study.category)));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main>
-        <section className="py-20 bg-gradient-to-br from-teal-600 to-sky-500 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl font-bold mb-6">Estudios que realizamos</h1>
-            <p className="text-xl text-cyan-100 max-w-3xl mx-auto">
-              Conoce los estudios disponibles en nuestra clínica para diagnóstico y prevención de distintas patologías.
+      <main className="flex-grow">
+        {/* Encabezado */}
+        <section className="py-20 bg-gradient-to-br from-teal-700 to-sky-500 text-white text-center shadow-md">
+          <div className="max-w-5xl mx-auto px-6">
+            <h1 className="text-4xl font-bold mb-4 tracking-wide">Prestaciones Médicas</h1>
+            <p className="text-lg text-teal-100">
+              En Clínica Fusavim ofrecemos estudios y servicios diseñados para el diagnóstico,
+              prevención y tratamiento de distintas patologías.
             </p>
           </div>
         </section>
 
-        <section className="py-8 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center mb-8">
-            <select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            >
-              <option value="">Todas las categorías</option>
-              {categories.map((cat, idx) => (
-                <option key={idx} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
+        {/* Filtros */}
+        <section className="py-10 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center mb-8">
+              <select
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+                className="border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+              >
+                <option value="">Todas las categorías</option>
+                {categories.map((cat, idx) => (
+                  <option key={idx} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Lista de prestaciones */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredStudies.map((study, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <img
-                    src={study.image}
-                    alt={study.name}
-                    className="w-full h-48 object-cover"
-                    loading="lazy"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">{study.name}</h3>
-                    <p className="text-teal-600 font-medium mb-2">{study.category}</p>
-                    <p className="text-gray-700">{study.description}</p>
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 flex flex-col items-start text-left border border-gray-100"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    {study.icon}
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">{study.name}</h3>
+                      <p className="text-sm text-teal-700 font-medium">{study.category}</p>
+                    </div>
                   </div>
+                  <p className="text-gray-700 leading-relaxed">{study.description}</p>
                 </div>
               ))}
 
               {filteredStudies.length === 0 && (
-                <p className="text-center col-span-full text-gray-600">No se encontraron estudios para esta categoría.</p>
+                <p className="text-center col-span-full text-gray-600">
+                  No se encontraron prestaciones para esta categoría.
+                </p>
               )}
             </div>
           </div>
