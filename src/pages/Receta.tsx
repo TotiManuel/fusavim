@@ -15,9 +15,9 @@ export default function SolicitudReceta() {
 
   // 🔒 Mapa interno con los números de cada médico (no visibles en la UI)
   const numerosMedicos: Record<string, string> = {
-    "Dra. López": "5491122334455",
-    "Dr. García": "5491144455566",
-    "Dra. Fernández": "5491166677788",
+    "Dra. Rossi Mercedes": "5493535106738",
+    "Dr. Cruz Maldonado Jorge": "5493535106738",
+    "Dra. Segovia Carolina": "5493535106738",
   };
 
   const handleEnviarWhatsApp = () => {
