@@ -81,9 +81,9 @@ const Prestaciones: React.FC = () => {
 
         {/* Contenido principal */}
         <section className="py-12">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {categorias.map((cat, index) => (
-              <div key={index} className="mb-10 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-semibold text-teal-700 mb-4 border-b border-teal-100 pb-2">
                   {cat.nombre}
                 </h2>
