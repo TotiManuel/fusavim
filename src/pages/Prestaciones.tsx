@@ -108,7 +108,10 @@ const Prestaciones: React.FC = () => {
                   <div className="flex items-center gap-4 mb-4">
                     {study.icon}
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900">{study.name}</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 before:content-['•'] before:mr-2 before:text-teal-600">
+                        {study.name}
+                      </h3>
+
                       <p className="text-sm text-teal-700 font-medium">{study.category}</p>
                     </div>
                   </div>
