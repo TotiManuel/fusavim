@@ -1,56 +1,62 @@
-// src/pages/Prestaciones.tsx
-import React, { useEffect, useState, type JSX } from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsappButton";
-import { HeartPulse, Activity, Microscope, Stethoscope, Wind } from "lucide-react";
 
-interface Study {
-  name: string;
-  category: string;
-  description: string;
-  icon: JSX.Element;
+interface Categoria {
+  nombre: string;
+  prestaciones: string[];
 }
 
 const Prestaciones: React.FC = () => {
-  const [filter, setFilter] = useState("");
-
-  const studies: Study[] = [
+  const categorias: Categoria[] = [
     {
-      name: "Estudios Cardiológicos",
-      category: "Cardiología",
-      description: "Evaluación del corazón mediante electrocardiogramas, ecocardiogramas y pruebas de esfuerzo.",
-      icon: <HeartPulse className="text-teal-600 w-10 h-10" />,
+      nombre: "Cardiología",
+      prestaciones: [
+        "Electrocardiograma (ECG)",
+        "Ecocardiograma Doppler",
+        "Prueba de esfuerzo",
+      ],
     },
     {
-      name: "Ecografías",
-      category: "Imagenología",
-      description: "Permiten visualizar órganos y tejidos internos mediante ultrasonido, sin radiación.",
-      icon: <Activity className="text-teal-600 w-10 h-10" />,
+      nombre: "Imagenología",
+      prestaciones: [
+        "Ecografías generales y especializadas",
+        "Radiografías digitales",
+        "Mamografías",
+      ],
     },
     {
-      name: "Análisis de laboratorio",
-      category: "Laboratorio",
-      description: "Exámenes clínicos de sangre, orina y otros fluidos para diagnóstico y seguimiento de enfermedades.",
-      icon: <Microscope className="text-teal-600 w-10 h-10" />,
+      nombre: "Laboratorio Clínico",
+      prestaciones: [
+        "Análisis de sangre y orina",
+        "Pruebas hormonales",
+        "Estudios de coagulación",
+      ],
     },
     {
-      name: "Servicio de Imágenes",
-      category: "Imagenología",
-      description: "Radiografías y estudios complementarios para evaluación de estructuras óseas y torácicas.",
-      icon: <Microscope className="text-teal-600 w-10 h-10" />,
+      nombre: "Gastroenterología",
+      prestaciones: [
+        "Endoscopías digestivas altas",
+        "Colonoscopías",
+        "Test de Helicobacter pylori",
+      ],
     },
     {
-      name: "Endoscopías",
-      category: "Gastroenterología",
-      description: "Procedimientos diagnósticos y terapéuticos del sistema digestivo con cámara endoscópica.",
-      icon: <Stethoscope className="text-teal-600 w-10 h-10" />,
+      nombre: "Neumonología",
+      prestaciones: [
+        "Espirometrías",
+        "Oximetría de pulso",
+        "Evaluaciones de función pulmonar",
+      ],
     },
     {
-      name: "Pruebas respiratorias",
-      category: "Neumonología",
-      description: "Espirometrías y otros estudios que permiten evaluar la capacidad y función pulmonar.",
-      icon: <Wind className="text-teal-600 w-10 h-10" />,
+      nombre: "Nefrología",
+      prestaciones: [
+        "Pruebas de función renal",
+        "Estudios de orina de 24 horas",
+        "Análisis de electrolitos",
+      ],
     },
   ];
 
@@ -58,73 +64,41 @@ const Prestaciones: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const filteredStudies = studies.filter((study) =>
-    study.category.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  const categories = Array.from(new Set(studies.map((study) => study.category)));
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
 
       <main className="flex-grow">
         {/* Encabezado */}
         <section className="py-20 bg-gradient-to-br from-teal-700 to-sky-500 text-white text-center shadow-md">
-          <div className="max-w-5xl mx-auto px-6">
+          <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-4xl font-bold mb-4 tracking-wide">Prestaciones Médicas</h1>
             <p className="text-lg text-teal-100">
-              En Clínica Fusavim ofrecemos estudios y servicios diseñados para el diagnóstico,
-              prevención y tratamiento de distintas patologías.
+              En Clínica Fusavim brindamos un servicio integral, con tecnología moderna y profesionales especializados.
             </p>
           </div>
         </section>
 
-        {/* Filtros */}
-        <section className="py-10 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-center mb-8">
-              <select
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                className="border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
-              >
-                <option value="">Todas las categorías</option>
-                {categories.map((cat, idx) => (
-                  <option key={idx} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Lista de prestaciones */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredStudies.map((study, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 flex flex-col items-start text-left border border-gray-100"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    {study.icon}
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 before:content-['•'] before:mr-2 before:text-teal-600">
-                        {study.name}
-                      </h3>
-
-                      <p className="text-sm text-teal-700 font-medium">{study.category}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">{study.description}</p>
-                </div>
-              ))}
-
-              {filteredStudies.length === 0 && (
-                <p className="text-center col-span-full text-gray-600">
-                  No se encontraron prestaciones para esta categoría.
-                </p>
-              )}
-            </div>
+        {/* Contenido principal */}
+        <section className="py-12">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            {categorias.map((cat, index) => (
+              <div key={index} className="mb-10 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h2 className="text-2xl font-semibold text-teal-700 mb-4 border-b border-teal-100 pb-2">
+                  {cat.nombre}
+                </h2>
+                <ul className="list-none pl-4 space-y-2 text-gray-800">
+                  {cat.prestaciones.map((prestacion, i) => (
+                    <li
+                      key={i}
+                      className="before:content-['•'] before:mr-2 before:text-teal-600 text-lg leading-relaxed"
+                    >
+                      {prestacion}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
       </main>
